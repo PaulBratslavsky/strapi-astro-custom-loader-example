@@ -1,0 +1,30 @@
+---
+import MainLayout from "@layouts/MainLayout.astro"
+import { getCollection } from "astro:content";
+
+const markdownPosts = await getCollection("blog");
+---
+
+<MainLayout title={"Blog"}>
+  <h1 class="text-3xl font-bold mb-6">Blog Section</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {markdownPosts.map((post) => {
+      const title = post.data.title;
+      const description = post.data.description;
+      return (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="p-6">
+            <h2 class="text-2xl font-bold mb-2 text-gray-800">{title}</h2>
+            <p class="text-gray-600 mb-4">{description}</p>
+            <a href={"blog/" + post.slug} class="text-blue-500 hover:text-blue-700 font-semibold">
+              Read more →
+            </a>
+          </div>
+        </div>
+      )
+    })}
+  </div>
+
+
+</MainLayout>

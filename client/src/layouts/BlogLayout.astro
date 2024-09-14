@@ -1,0 +1,46 @@
+---
+import MainLayout from "@layouts/MainLayout.astro"
+const { title, link } = Astro.props;
+---
+
+<MainLayout title={title}>
+  <div class="container mx-auto px-4 w-3/4">
+    <a href={link} class="text-blue-600 hover:text-blue-800 mb-4 inline-block">&larr; Back to blog</a>
+    <article class="prose prose-lg max-w-none">
+      <slot />
+    </article>
+  </div>
+</MainLayout>
+
+<style is:global>
+  /* Additional custom styles for markdown content */
+  .prose h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+  .prose h2 {
+    @apply text-2xl font-semibold mb-3;
+  }
+  .prose p {
+    @apply mb-4;
+  }
+  .prose ul, .prose ol {
+    @apply ml-6 mb-4;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose a {
+    @apply text-blue-600 hover:text-blue-800;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic;
+  }
+  .prose code {
+    @apply bg-gray-100 rounded px-1;
+  }
+  .prose pre {
+    @apply bg-gray-100 p-4 rounded overflow-x-auto;
+  }
+</style>
+
+

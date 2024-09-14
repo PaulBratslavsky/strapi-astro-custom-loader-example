@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+
+interface FileData {
+  id: number;
+  documentId: string;
+  url: string;
+  alternativeText: string;
+  name: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  __component: 'shared.media';
+  id: number;
+  file: FileData;
+}
+
+const { file } = Astro.props;
+const STRAPI_BASE_URL = import.meta.env.STRAPI_BASE_URL || "http://localhost:1337";
+---
+
+<div class="relative w-full h-64 overflow-hidden my-6 rounded-lg shadow-lg">
+  <Image
+    src={STRAPI_BASE_URL + file.url}
+    alt={file.alternativeText}
+    width={file.width}
+    height={file.height}
+    class="w-full h-full object-cover"
+  />
+</div>
+

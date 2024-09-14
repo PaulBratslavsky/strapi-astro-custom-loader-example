@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import { type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { Image } from 'astro:assets';
+import BlockRenderer from "@components/blocks/BlockRenderer.astro";
+
+import BlogLayout from "@layouts/BlogLayout.astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const strapiPosts = await getCollection("strapiPostsLoader");
+
+  return strapiPosts
+    .map((p) => {
+      return {
+        params: { slug: p.data.slug },
+        props: { post: p },
+      };
+    });
+};
+
+type Props = { post: CollectionEntry<"strapiPostsLoader"> };
+
+const { post } = Astro.props as Props;
+
+const STRAPI_BASE_URL = import.meta.env.STRAPI_BASE_URL || "http://localhost:1337";
+
+if (!post) return Astro.rewrite("/404");
+const { title, cover, blocks } = post.data;
+---
+
+<BlogLayout title={title} link="/strapi-blog">
+  <Image src={STRAPI_BASE_URL + cover.url} alt={title} width={300} height={200} class="w-full h-auto mb-4 rounded-md"/>
+  <h1>{title}</h1>
+  <BlockRenderer blocks={blocks} />
+</BlogLayout>

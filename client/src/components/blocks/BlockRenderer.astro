@@ -1,0 +1,29 @@
+---
+import RichText from './RichText.astro';
+import Quote from './Quote.astro';
+import Media from './Media.astro';
+import Slider from './Slider.astro';
+
+interface Block {
+  __component: string;
+  id: number;
+  [key: string]: any;
+}
+
+interface BlockRendererProps {
+  blocks: Block[];
+}
+const { blocks } = Astro.props as BlockRendererProps;
+
+const componentMap: Record<string, any> = {
+  'shared.rich-text': RichText,
+  'shared.quote': Quote,
+  'shared.media': Media,
+  'shared.slider': Slider,
+};
+---
+
+{blocks.map((block) => {
+  const Component = componentMap[block.__component];
+  return Component ? <Component {...block} /> : null;
+})}

@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "client": "yarn dev --prefix ../client/",
+    "server": "yarn dev --prefix ../server/",
+    "setup:client": "cd client && yarn && node ../copy-env.js ./",
+    "setup:server": "cd server && yarn && node ../copy-env.js ./",
+    "setup": "yarn install && yarn setup:client && yarn setup:server && yarn seed",
+    "dev": "yarn concurrently \"cd server && yarn develop\" \"npx wait-on http://localhost:1337 && cd client && yarn dev\"",
+    "seed": "cd server && yarn strapi import -f ../seed-data.tar.gz --force",
+    "export": "cd server && yarn strapi export --no-encrypt -f ../seed-data",
+    "repo:upstream": "git fetch upstream && git merge upstream/main"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "npm-check-updates": "^16.14.15",
+    "wait-on": "^8.0.1"
+  }
+}

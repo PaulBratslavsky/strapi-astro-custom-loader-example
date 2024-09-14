@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components'
+import classNames from 'classnames'
+
+interface Props {
+  href: string;
+  class?: string;
+  isExternal?: boolean;
+  icon?: string;
+  iconColor?: string;
+  iconStyles?: string;
+}
+
+const { href, isExternal, icon, iconColor = "text-white", iconStyles, class: className, ...rest } = Astro.props;
+const target = isExternal ? "_blank" : "";
+
+const baseStyles = "flex justify-center inline-flex items-center gap-2 py-2 px-6 bg-green-500 hover:bg-green-600 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-200"
+const iconBaseStyles = "w-5 h-5"
+---
+
+
+<a class:list={[baseStyles, className]} href={href} target={target} {...rest}>
+  { icon && <Icon name={icon} class={classNames(iconBaseStyles, iconStyles)} style={`color: ${iconColor}`} />}
+  <slot />
+</a>
+

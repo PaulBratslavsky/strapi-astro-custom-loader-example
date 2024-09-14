@@ -1,0 +1,35 @@
+---
+import MainLayout from "@layouts/MainLayout.astro"
+import { getCollection } from "astro:content";
+import { Image } from 'astro:assets';
+
+const STRAPI_BASE_URL = import.meta.env.STRAPI_BASE_URL || "http://localhost:1337";
+const strapiPosts = await getCollection("strapiPostsLoader");
+
+---
+
+<MainLayout title="Strapi Blog">
+  <section class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-6">Strapi Blog Section</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {strapiPosts.map((post) => {
+        const { title, description, slug, cover } = post.data;
+        return (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="p-6">
+              <Image src={STRAPI_BASE_URL + cover.url} alt={title} width={300} height={200} class="w-full h-auto mb-4 rounded-md"/>
+              <h2 class="text-2xl font-bold mb-2 text-gray-800">{title}</h2>
+              <p class="text-gray-600 mb-4">{description}</p>
+              <a href={"strapi-blog/" + slug} class="text-blue-500 hover:text-blue-700 font-semibold">
+                Read more →
+              </a>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  </section>
+</MainLayout>
+
+

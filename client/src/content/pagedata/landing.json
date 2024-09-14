@@ -1,0 +1,43 @@
+{
+  "landingPageData": {
+    "title": "Home",
+    "content": {
+      "hero": {
+        "title": "Build & Launch without problems",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur nisl sodales egestas lobortis.",
+        "button": {
+          "text": "Twitter",
+          "href": "https://twitter.com",
+          "icon": "mdi:twitter",
+          "class": "bg-red-500 hover:bg-red-600"
+        },
+        "image": {
+          "src": "https://images.unsplash.com/photo-1462826303086-329426d1aef5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
+          "alt": ""
+        }
+      },
+      "features": {
+        "title": "Features",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur nisl sodales egestas lobortis.",
+        "data": [
+          {
+            "title": "Feature 1",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "title": "Feature 2",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "title": "Feature 3",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          },
+          {
+            "title": "Feature 4",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      }
+    }
+  }
+}

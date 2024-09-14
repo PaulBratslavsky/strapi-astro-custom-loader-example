@@ -1,0 +1,16 @@
+---
+import { marked } from "marked";
+
+interface RichTextProps {
+  __component: "shared.rich-text";
+  id: number;
+  body: string;
+}
+
+const { body } = Astro.props as RichTextProps;
+const parsedContent = marked.parse(body);
+---
+
+<div class="max-w-5xl mx-auto my-12 rich-text">
+  <article set:html={parsedContent} />
+</div>

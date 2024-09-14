@@ -1,0 +1,63 @@
+---
+import MainLayout from "@layouts/MainLayout.astro"
+import ButtonLink from "@components/ButtonLink.astro"
+
+import { getEntry } from 'astro:content';
+
+const { data } = await getEntry('pagedata', 'landing');
+const { title, content } = data.landingPageData;
+const header = content.hero;
+const features = content.features;
+
+---
+
+<MainLayout title={title}>
+	<section>
+		<div class="bg-gray-50 pt-12 lg:pt-20 pb-20 rounded-2xl">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-wrap -mx-4">
+					<div class="w-full lg:w-1/2 px-4 mb-12 md:mb-20 lg:mb-0 flex items-center">
+						<div class="w-full text-center lg:text-left">
+							<div class="max-w-md mx-auto lg:mx-0">
+								<h2 class="mb-3 text-4xl lg:text-5xl font-bold font-heading text-green-700">
+									<span>{header.title}</span>
+								</h2>
+							</div>
+							<div class="max-w-sm mx-auto lg:mx-0">
+								<p class="mb-6 text-gray-400 leading-loose">{header.description}</p>
+								<div>
+									<ButtonLink 
+										href={header.button.href}
+										isExternal
+										icon={header.button.icon}
+										class="bg-red-500 hover:bg-red-600"
+									>
+										{header.button.text}
+									</ButtonLink>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 px-4 flex items-center justify-center">
+						<div class="relative" style="z-index: 0;">
+							<img class="h-128 w-full max-w-lg object-cover rounded-3xl md:rounded-br-none" src={header.image.src} alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="py-20">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-wrap -mx-4">
+					{ features.data.map( ({ title, description }: { title: string, description: string }) => {
+						return <div class="mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-4">
+						<h4 class="mb-4 text-2xl font-bold font-heading">{title}</h4>
+						<p class="text-gray-500 leading-loose">{description}</p>
+					</div>})}
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>
