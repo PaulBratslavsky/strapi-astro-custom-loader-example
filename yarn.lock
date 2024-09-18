@@ -2063,6 +2063,11 @@ ssri@^9.0.0:
   dependencies:
     minipass "^3.1.1"
 
+strapi-community-astro-loader@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/strapi-community-astro-loader/-/strapi-community-astro-loader-1.0.0.tgz#9e9b0ff6c79a9109714544c8e5abb4d0cffdfb75"
+  integrity sha512-x3u+0PBg7I3u96+CSVvb0pPouQc8eVOkhq327cTbZ1eFupqdezaldAVZqER5OpUTpW4r169d4Ws36pgolu7uIA==
+
 "string-width-cjs@npm:string-width@^4.2.0":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"

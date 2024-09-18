@@ -1,5 +1,7 @@
 import { defineCollection, z } from "astro:content";
+
 import { strapiLoader } from "@/strapi-loader";
+// import { strapiLoader } from "strapi-community-astro-loader"
 
 // Define the Strapi posts collection
 const blog = defineCollection({
