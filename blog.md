@@ -1327,6 +1327,8 @@ This is what I did with my Strapi Astro Loader.
 
 You can find it here: [Strapi Astro Loader](https://www.npmjs.com/package/strapi-community-astro-loader)
 
+GitHub Repo: [Strapi Astro Loader](https://github.com/PaulBratslavsky/strapi-community-astro-loader)
+
 This is still work in progress and contributions are welcome.
 
 So let's install the loader with the following command and use it in our Astro project.
